@@ -15,10 +15,8 @@ def index():
     dl = request.args.get('dl') or request.form.get('dl') or False
 
     if not text:
-        return Response({
-            'status': 'error',
-            'message': 'text is required'
-        }, status=400)
+        return Response(
+            response='{"error": "text is required"}', status=400)
 
     tts = gTTS(text=text, lang=lang, tld=tld, slow=slow)
     mp3_fp = BytesIO()
