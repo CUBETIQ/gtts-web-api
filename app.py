@@ -8,11 +8,12 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     text = request.args.get('text')
+    lang = request.args.get('lang') or 'km'
 
     if not text:
         return Response('No text specified', status=400)
 
-    tts = gTTS(text=text, lang='km')
+    tts = gTTS(text=text, lang=lang)
     mp3_fp = BytesIO()
     tts.write_to_fp(mp3_fp)
     
