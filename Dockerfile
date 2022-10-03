@@ -20,4 +20,4 @@ COPY --from=builder /root/.local /root/.local
 
 COPY . .
 
-ENTRYPOINT ["python3", "-m", "flask", "run"]
+ENTRYPOINT ["flask", "run"]
